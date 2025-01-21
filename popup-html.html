@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MSquare Text Highlighter</title>
+    <style>
+        body {
+            width: 320px;
+            padding: 16px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .logo {
+            width: 32px;
+            height: 32px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #0072ff;
+            /* Removed problematic gradient text */
+        }
+        #highlightsContainer {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .highlight-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            word-break: break-word;
+        }
+        .webhook-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        #webhookUrl {
+            width: 100%;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+        }
+        #webhookUrl:focus {
+            box-shadow: 0 0 0 2px #0072ff;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #clearHighlights {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+        }
+        #status {
+            font-size: 12px;
+            color: #00ff00;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #status.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="icons/icon48.png" alt="Logo" class="logo">
+            <h1>MSquare Text Highlighter</h1>
+        </div>
+        <div id="highlightsContainer">
+            <div id="noHighlights">No highlights yet. Select text on any webpage to highlight it!</div>
+        </div>
+        <div class="webhook-section">
+            <input type="url" id="webhookUrl" placeholder="Enter webhook URL">
+            <button id="sendToWebhook">Send to Webhook</button>
+        </div>
+        <button id="clearHighlights">Clear All Highlights</button>
+        <div id="status"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
